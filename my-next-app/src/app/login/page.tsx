@@ -1,15 +1,36 @@
-// pages/index.tsx
-import Head from 'next/head';
-import Image from 'next/image';
+import Image from 'next/image'
 
-export default function Homjdse() {
+export default function page() {
   return (
-    <main className='flex min-h-screen flex-col justify-between p-10'>
+    <div className="bg-red-50 min-h-dvh flex flex-col">
 
-      <div>
-        <p>helo</p>
-        <p>helo</p>
+      <div className="bg-yellow-50 flex w-full p-4 justify-between items-center  mx-auto">
+        <h1 className="text-xl font-bold">logo</h1>
+        <nav>
+          <ul className='flex space-x-6'>
+            <li><a href="/" className="hover:underline">首页</a></li>
+            <li><a href="#about" className="hover:underline">历史</a></li>
+            <li><a href="#services" className="hover:underline">收藏</a></li>
+            <li><a href="/img/miku_long.jpg" className="hover:underline">自杀</a></li>
+          </ul>
+        </nav>
       </div>
-    </main>
+
+      <div className="bg-blue-50 flex flex-grow">
+
+        <div id="aa" className="hidden w-[360px] md:block relative">
+          <Image
+            src="/img/喜多ちゃん❤️.jpg"
+            layout="fill"
+            alt="Picture of 喜多ちゃん"
+          />
+        </div>
+
+        <div className="bg-white  flex-grow">
+          {/* 这里要写login的界面部分 */}
+        </div>
+
+      </div>
+    </div>
   );
 }
