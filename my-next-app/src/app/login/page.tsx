@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 export default function page() {
   return (
-    <div className="bg-red-50 min-h-dvh flex flex-col">
+    <div className="flex flex-col min-h-dvh">
 
-      <div className="bg-yellow-50 flex w-full p-4 justify-between items-center  mx-auto">
-        <h1 className="text-xl font-bold">logo</h1>
+      <div className="flex justify-between items-center bg-lime-50/50 mx-auto p-4 w-full">
+        <h1 className="font-bold text-xl">logo</h1>
         <nav>
           <ol className='flex space-x-6'>
             <li><a href="/" className="hover:underline">首页</a></li>
@@ -16,22 +16,36 @@ export default function page() {
         </nav>
       </div>
 
-      <div className="bg-blue-50 flex flex-grow">
+      <div className="flex flex-grow">
 
-        <div id="aa" className="hidden w-[360px] md:block relative">
+        <div id="aa" className="md:block relative hidden backdrop-blur-sm w-[360px] fill-transparent">
           <Image
-            className='rounded-lg hover:blur-none blur-sm'
+            className='hover:blur-none rounded-lg'
             src="/img/喜多ちゃん❤️.jpg"
             layout="fill"
             alt="Picture of 喜多ちゃん"
           />
         </div>
 
-        <div className="bg-white  flex-grow">
-          {/* 这里要写login的界面部分 */}
+        <div className="flex-grow bg-slate-100/50">
+          <div className="bg-green-800 mb-4 w-[30dvw] h-dvh">
+            <form action="demo_form.php" method="post/get" className="flex flex-col p-1">
+              <p className='text-black'>类型</p>
+              <input type="text" name="email" size={40} maxLength={50} className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-md w-full focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+              <p className='text-black'>姓名</p>
+              <input type="email" id="email" name="email" required className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-md w-full focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+              <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600 shadow-md m-4 px-4 py-2 border border-transparent rounded-md w-16 font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                注册
+              </button>
+              <button type="button" className="bg-indigo-600 hover:bg-indigo-700 shadow-sm m-4 px-4 py-2 border border-transparent rounded-md w-16 font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                登录
+              </button>
+
+            </form>
+          </div>
         </div>
 
       </div>
-    </div>
+    </div >
   );
 }
