@@ -16,10 +16,12 @@ export default function page() {
         </nav>
       </div>
 
-      <div className="flex flex-grow">
+      <div className="flex flex-grow justify-center">
 
         <div id="aa" className="md:block relative hidden backdrop-blur-sm w-[360px] fill-transparent">
           <Image
+            // width={360}
+            // height={600}
             className='hover:blur-none rounded-lg'
             src="/img/喜多ちゃん❤️.jpg"
             layout="fill"
@@ -27,19 +29,15 @@ export default function page() {
           />
         </div>
 
-        <div className="flex-grow bg-slate-100/50">
-          <div className="bg-green-800 mb-4 w-[30dvw] h-dvh">
-            <form action="demo_form.php" method="post/get" className="flex flex-col p-1">
-              <p className='text-black'>类型</p>
-              <input type="text" name="email" size={40} maxLength={50} className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-md w-full focus:outline-none focus:ring-indigo-500 sm:text-sm" />
-              <p className='text-black'>姓名</p>
-              <input type="email" id="email" name="email" required className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-md w-full focus:outline-none focus:ring-indigo-500 sm:text-sm" />
-              <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 shadow-indigo-600 shadow-md m-4 px-4 py-2 border border-transparent rounded-md w-16 font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                注册
-              </button>
-              <button type="button" className="bg-indigo-600 hover:bg-indigo-700 shadow-sm m-4 px-4 py-2 border border-transparent rounded-md w-16 font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                登录
-              </button>
+        <div className="flex justify-center bg-slate-100/50">
+          <div className="bg-lime-50 mb-4 w-[40dvw] h-dvh">
+            <form action="/" method="get" className="flex flex-col p-1">
+              {Input("类型", "text")}
+              {Input("姓名", "email")}
+              <div className='flex justify-center'>
+                {Button("注册", "submit", "indigo")}
+                {Button("登录", "button", "indigo")}
+              </div>
 
             </form>
           </div>
@@ -48,4 +46,29 @@ export default function page() {
       </div>
     </div >
   );
+}
+// const formOnSubmit = ()=>{
+//   fetch("localhost:3000")
+// }
+
+// function formOnSubmit() {
+//   fetch("localhost:3000")
+// }
+
+function Button(content: string, type: "submit" | "reset" | "button" | undefined, color: string) {
+  return (
+    <button type={type} className={`bg-${color}-600 hover:bg-${color}-700 bg shadow-sm m-4 px-4 py-2 border border-transparent rounded-md w-16 font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}>
+      {content}
+    </button >
+  )
+}
+
+function Input(content: string, type: string) {
+  return (<div>
+    <p>
+      {content}
+    </p>
+    <input type={type} name="email" size={40} maxLength={50} className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-md w-full focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+  </div>
+  )
 }
