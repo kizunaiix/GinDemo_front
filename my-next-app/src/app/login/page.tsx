@@ -30,11 +30,11 @@ export default function page() {
         </div>
 
         <div className="flex justify-center bg-slate-100/50">
-          <div className="bg-lime-50 mb-4 w-[40dvw] h-dvh">
-            <form action="/" method="get" className="flex flex-col p-1">
+          <div className="bg-lime-50 pl-10 pr-10 mb-4 w-[40dvw] h-dvh">
+            <form action="/" method="get" className="flex flex-col p-1 bg-red-100">
               {Input("类型", "text")}
               {Input("姓名", "email")}
-              <div className='flex justify-center'>
+              <div className='flex justify-center bg-blue-400'>
                 {Button("注册", "submit", "indigo")}
                 {Button("登录", "button", "indigo")}
               </div>
@@ -64,11 +64,13 @@ function Button(content: string, type: "submit" | "reset" | "button" | undefined
 }
 
 function Input(content: string, type: string) {
-  return (<div>
+  return (<div className=''>
     <p>
       {content}
     </p>
-    <input type={type} name="email" size={40} maxLength={50} className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 px-3 py-2 border rounded-md w-full focus:outline-none focus:ring-indigo-500 sm:text-sm" />
+    {/* <div className='flex justify-center'> */}
+      <input type={type} name="email" size={40} maxLength={50} className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 p-2 border rounded-md w-2/3 sm:text-sm focus:outline-none focus:ring-indigo-500" />
+    {/* </div> */}
   </div>
   )
 }
