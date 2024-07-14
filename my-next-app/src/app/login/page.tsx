@@ -1,3 +1,6 @@
+'use client';
+import { log } from 'console';
+import { promises } from 'dns';
 import Image from 'next/image'
 
 export default function page() {
@@ -31,12 +34,26 @@ export default function page() {
 
         <div className="flex justify-center bg-slate-100/50">
           <div className="bg-lime-50 pl-10 pr-10 mb-4 w-[40dvw] h-dvh">
-            <form action="/" method="get" className="flex flex-col p-1 bg-red-100">
-              {Input("类型", "text")}
+            <form action="/" method="post" className="flex flex-col p-1 bg-red-100">
+              <div>
+                {Input("类型", "text")}
+              </div>
               {Input("姓名", "email")}
               <div className='flex justify-center bg-blue-400'>
-                {Button("注册", "submit", "indigo")}
-                {Button("登录", "button", "indigo")}
+                {Button("注册", "submit", "indigo", () => { })}
+                {Button("登录", "button", "indigo", () => {
+                  fetch("http://localhost:8000/api/login", {
+                    method: "post",
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body:JSON.stringify({
+                      content: "hello api",
+                      content2:"hello!"
+                    })
+                  })
+                  })
+                }
               </div>
 
             </form>
@@ -55,9 +72,9 @@ export default function page() {
 //   fetch("localhost:3000")
 // }
 
-function Button(content: string, type: "submit" | "reset" | "button" | undefined, color: string) {
+function Button(content: string, type: "submit" | "reset" | "button" | undefined, color: string, fonclick: () => void) {
   return (
-    <button type={type} className={`bg-${color}-600 hover:bg-${color}-700 bg shadow-sm m-4 px-4 py-2 border border-transparent rounded-md w-16 font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}>
+    <button type={type} onClick={fonclick} className={`bg-${color}-600 hover:bg-${color}-700 bg shadow-sm m-4 px-4 py-2 border border-transparent rounded-md w-16 font-medium text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}>
       {content}
     </button >
   )
@@ -69,7 +86,7 @@ function Input(content: string, type: string) {
       {content}
     </p>
     {/* <div className='flex justify-center'> */}
-      <input type={type} name="email" size={40} maxLength={50} className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 p-2 border rounded-md w-2/3 sm:text-sm focus:outline-none focus:ring-indigo-500" />
+    <input type={type} name="email" size={40} maxLength={50} className="block border-gray-300 focus:border-indigo-500 shadow-sm mt-1 p-2 border rounded-md w-2/3 sm:text-sm focus:outline-none focus:ring-indigo-500" />
     {/* </div> */}
   </div>
   )
